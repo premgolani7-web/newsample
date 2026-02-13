@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Payal ❤️</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:black;
+  color:white;
+  overflow:hidden;
+}
+
+/* Layout */
+.wrapper{
+  display:flex;
+  height:100vh;
+  width:100%;
+}
+
+/* Left Slideshow */
+.left{
+  width:40%;
+  position:relative;
+  overflow:hidden;
+}
+
+.left img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  animation:slide 12s infinite;
+}
+
+.left img:nth-child(1){animation-delay:0s;}
+.left img:nth-child(2){animation-delay:4s;}
+.left img:nth-child(3){animation-delay:8s;}
+
+@keyframes slide{
+  0%{opacity:0;}
+  10%{opacity:1;}
+  30%{opacity:1;}
+  40%{opacity:0;}
+}
+
+/* Right Content */
+.right{
+  width:60%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff5f9e,#ff9a9e);
+}
+
+/* Main Box */
+.box{
+  background:rgba(0,0,0,0.4);
+  padding:35px;
+  border-radius:25px;
+  text-align:center;
+  width:85%;
+  max-width:380px;
+  box-shadow:0 0 25px pink;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:17px;
+  margin:12px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4081;
+  color:white;
+}
+
+#no{
+  background:#555;
+  color:white;
+  position:absolute;
+}
+
+/* Result */
+.result{
+  display:none;
+  text-align:center;
+}
+
+.result img{
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 0 20px pink;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+  .wrapper{
+    flex-direction:column;
+  }
+
+  .left{
+    width:100%;
+    height:35%;
+  }
+
+  .right{
+    width:100%;
+    height:65%;
+  }
+
+}
+
+/* Romantic Fade In */
+.fade{
+  opacity:0;
+  animation:fadeIn 2s forwards;
+}
+
+.fade:nth-child(3){animation-delay:1s;}
+.fade:nth-child(4){animation-delay:2s;}
+.fade:nth-child(5){animation-delay:3s;}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+/* Love Letter */
+.letter{
+  font-style:italic;
+  line-height:1.6;
+  margin:15px 0;
+  color:#ffd1dc;
+}
+
+/* Heart Rain */
+.heartRain{
+  position:fixed;
+  top:-20px;
+  font-size:20px;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="wrapper">
+
+  <!-- Left Slideshow -->
+  <div class="left">
+    <img src="img1.jpeg">
+    <img src="img2.jpeg">
+    <img src="img3.jpeg">
+  </div>
+
+  <!-- Right Side -->
+  <div class="right">
+
+    <div class="box" id="mainBox">
+
+      <h1>💖 Payal, Will You Be My Valentine? 💖</h1>
+
+      <p>You are my world 🥺❤️</p>
+
+      <button id="yes" onclick="yesClicked()">Yes 😘</button>
+
+      <button id="no" onclick="noClicked()" ontouchstart="noClicked()">No 😢</button>
+
+
+    </div>
+
+
+    <!-- Result -->
+    <div class="result" id="resultBox">
+
+  <h1>Yaaayyy Payal 😍❤️</h1>
+
+  <img src="https://media.tenor.com/vkJQcnn06_EAAAAm/dancing-cat-oppa-gangnam-style.webp">
+
+  <h2 class="fade">I Love You So Much 💕</h2>
+
+  <p class="letter fade">
+    From the first day I met you,<br>
+    my world became more beautiful 💖<br><br>
+
+    Every smile of yours makes my heart skip a beat 😘<br>
+    I promise to stand with you always 💍<br><br>
+
+    Forever Yours ❤️
+  </p>
+
+  <h3 class="fade">Happy Valentine’s Day 💝</h3>
+
+</div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+let music = document.getElementById("bgMusic");
+
+function yesClicked(){
+
+  // Play music after Yes
+  music.play();
+
+  document.getElementById("mainBox").style.display="none";
+  document.getElementById("resultBox").style.display="block";
+}
+
+function moveNo(){
+
+ let btn=document.getElementById("no");
+
+ let maxX=window.innerWidth-btn.offsetWidth-20;
+ let maxY=window.innerHeight-btn.offsetHeight-20;
+
+ btn.style.left=Math.random()*maxX+"px";
+ btn.style.top=Math.random()*maxY+"px";
+}
+
+
+/* Move No Button */
+function moveNo(){
+
+ let btn=document.getElementById("no");
+
+ let maxX=window.innerWidth-btn.offsetWidth-20;
+ let maxY=window.innerHeight-btn.offsetHeight-20;
+
+ let x=Math.random()*maxX;
+ let y=Math.random()*maxY;
+
+ btn.style.left=x+"px";
+ btn.style.top=y+"px";
+
+}
+
+function startHearts(){
+
+ for(let i=0;i<30;i++){
+
+  let h=document.createElement("div");
+  h.className="heartRain";
+  h.innerHTML="❤️";
+
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*5)+"s";
+  h.style.fontSize=(15+Math.random()*25)+"px";
+
+  document.body.appendChild(h);
+
+  setTimeout(()=>h.remove(),8000);
+ }
+
+}
+
+// Modify yesClicked function
+let oldYes = yesClicked;
+
+yesClicked = function(){
+
+ oldYes();
+ startHearts();
+
+}
+
+
+let noCount = 0;
+
+function noClicked(){
+
+ let btn = document.getElementById("no");
+
+ let messages = [
+  "Are you sure? 😳",
+  "Please na Payal 🥺❤️",
+  "Mera dil toot jaayega 💔",
+  "Ek aur chance 😘",
+  "Ab toh Yes hi bolo 😜"
+ ];
+
+ if(noCount < messages.length){
+
+   btn.innerHTML = messages[noCount];
+   noCount++;
+
+ } else {
+
+   moveNo(); // After drama, start running 😂
+
+ }
+}
+
+
+
+</script>
+
+</body>
+</html>
